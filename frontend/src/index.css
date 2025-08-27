@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm dark theme as default */
+    --background: 25 25% 8%;
+    --foreground: 30 15% 85%;
+
+    --card: 25 20% 12%;
+    --card-foreground: 30 15% 85%;
+
+    --popover: 25 20% 12%;
+    --popover-foreground: 30 15% 85%;
+
+    --primary: 25 95% 60%;
+    --primary-foreground: 25 25% 8%;
+
+    --secondary: 25 15% 18%;
+    --secondary-foreground: 30 15% 85%;
+
+    --muted: 25 15% 15%;
+    --muted-foreground: 30 8% 55%;
+
+    --accent: 25 80% 55%;
+    --accent-foreground: 25 25% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 30 15% 85%;
+
+    --border: 25 15% 20%;
+    --input: 25 15% 18%;
+    --ring: 25 95% 60%;
+
+    --radius: 0.5rem;
+  }
+
+  .light {
+    /* Light theme */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 25 95% 50%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 25 80% 55%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 25 95% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/40;
+}
+
+/* Chat message animations */
+.message-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.message-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Typing indicator animation */
+.typing-dot {
+  animation: typing 1.5s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* File upload drag styles */
+.drag-over {
+  @apply border-primary bg-primary/5;
+}
+
+/* Markdown content styles */
+.markdown-content {
+  @apply text-sm leading-relaxed;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  @apply font-semibold mt-4 mb-2;
+}
+
+.markdown-content h1 {
+  @apply text-xl;
+}
+
+.markdown-content h2 {
+  @apply text-lg;
+}
+
+.markdown-content h3 {
+  @apply text-base;
+}
+
+.markdown-content p {
+  @apply mb-3;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  @apply ml-4 mb-3;
+}
+
+.markdown-content li {
+  @apply mb-1;
+}
+
+.markdown-content code {
+  @apply bg-muted px-1 py-0.5 rounded text-xs font-mono;
+}
+
+.markdown-content pre {
+  @apply bg-muted p-3 rounded-md overflow-x-auto mb-3;
+}
+
+.markdown-content pre code {
+  @apply bg-transparent p-0;
+}
+
+.markdown-content blockquote {
+  @apply border-l-4 border-muted-foreground/20 pl-4 italic mb-3;
+}
+
+.markdown-content a {
+  @apply text-primary hover:underline;
+}

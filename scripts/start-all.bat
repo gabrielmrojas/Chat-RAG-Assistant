@@ -1,0 +1,19 @@
+@echo off
+echo Starting Chat RAG Assistant (Frontend + Backend)...
+
+echo Starting backend in new window...
+start "Chat RAG Backend" cmd /c "cd backend && call venv\Scripts\activate.bat && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+echo Waiting for backend to start...
+timeout /t 5 /nobreak > nul
+
+echo Starting frontend in new window...
+start "Chat RAG Frontend" cmd /c "cd frontend && npm run dev"
+
+echo.
+echo Both services are starting...
+echo Backend: http://localhost:8000
+echo Frontend: http://localhost:5173
+echo.
+echo Press any key to close this window...
+pause > nul

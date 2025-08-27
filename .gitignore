@@ -1,0 +1,75 @@
+# ===== PYTHON/BACKEND =====
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Python packaging
+*.egg-info/
+build/
+dist/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+*.cover
+
+# IDE
+.idea/
+.vscode/
+.windsurf/
+
+# ===== NODE.JS/FRONTEND =====
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Build output
+frontend/dist/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Environment files
+.env.local
+.env.development.local
+.env.production.local
+
+# ESLint cache
+.eslintcache
+
+# ===== CHAT RAG PROJECT SPECIFIC =====
+# Backend data directories
+backend/uploads/
+backend/chroma_db/
+backend/logs/
+backend/.env
+
+# Frontend environment
+frontend/.env.local
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# ===== SYSTEM FILES =====
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+
+# Logs
+*.log
