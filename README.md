@@ -1,7 +1,7 @@
-<h1 align="center">
-  Chat Assistant with RAG 
-  <img src="./images/logo.png" alt="Logo" width="80" height="80" style="vertical-align: middle;"/>
-</h1>
+<div align="center" style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+  <h1 style="margin: 0;">Chat Assistant with RAG</h1>
+  <img src="./images/logo.png" alt="Logo" width="60" height="60"/>
+</div>
 
 <p align="center">
   An intelligent web chat assistant that uses RAG (Retrieval-Augmented Generation) 
