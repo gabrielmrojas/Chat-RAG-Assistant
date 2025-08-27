@@ -4,7 +4,7 @@ This document describes how to deploy the Chat Assistant with RAG to a productio
 
 ## Prerequisites
 - Operating system: Linux or Windows server
-- Python 3.9+
+- Python 3.12
 - Node.js 18+
 - PostgreSQL 13+
 - OpenAI API key
