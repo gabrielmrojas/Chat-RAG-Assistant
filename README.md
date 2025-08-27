@@ -1,6 +1,17 @@
-# Chat Assistant with RAG
+<h1 align="center">
+  Chat Assistant with RAG 
+  <img src="./images/logo.png" alt="Logo" width="80" height="80" style="vertical-align: middle;"/>
+</h1>
 
-An intelligent web chat assistant that uses RAG (Retrieval-Augmented Generation) to answer questions based on user-uploaded documents.
+<p align="center">
+  An intelligent web chat assistant that uses RAG (Retrieval-Augmented Generation) 
+  to answer questions based on user-uploaded documents.
+</p>
+
+<p align="center">
+  <img src="./images/Chat.png" alt="Chat Screenshot" width="600"/>
+</p>
+
 
 ## 🏗️ Architecture
 
