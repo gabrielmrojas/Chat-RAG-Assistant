@@ -4,17 +4,17 @@ FROM node:20
 # Set the working directory in the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json (or yarn.lock)
+# Copy package.json and package-lock.json first (to leverage Docker cache)
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application's code
+# Copy the rest of the application
 COPY . .
 
-# Make port 5173 available to the world outside this container
+# Make port 6173 available to the world outside this container
 EXPOSE 6173
 
 # Command to run the app
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev", "--", "--host", "--port", "6173"]
