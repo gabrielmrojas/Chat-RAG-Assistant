@@ -1,7 +1,7 @@
 /**
  * API service for communicating with the Chat RAG backend
  */
-import axios, { AxiosInstance, AxiosResponse } from 'axios'
+import axios, { AxiosInstance } from 'axios'
 import {
   Document,
   DocumentUploadResponse,
@@ -207,8 +207,9 @@ class ApiService {
   // Utility methods
   getWebSocketUrl(sessionId: string): string {
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-    // Use backend port (8000) instead of frontend port (3000)
-    const host = window.location.hostname + ':8000'
+    // Use dynamic backend port from environment variable or fallback to 8000
+    const backendPort = (import.meta as any).env?.VITE_BACKEND_PORT || '8000'
+    const host = window.location.hostname + ':' + backendPort
     return `${protocol}//${host}/api/v1/chat/ws/${sessionId}`
   }
 
