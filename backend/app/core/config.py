@@ -54,6 +54,7 @@ class Settings(BaseSettings):
     # API
     api_v1_str: str = "/api/v1"
     project_name: str = "Chat RAG Assistant"
+    port: int = 8000
     
     @field_validator("allowed_origins", mode="before")
     def assemble_cors_origins(cls, v):

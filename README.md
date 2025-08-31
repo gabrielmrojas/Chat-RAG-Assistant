@@ -134,9 +134,9 @@ DATABASE_URL=postgresql://user:password@localhost:5432/chatrag_db
 
 # OpenAI & LLM
 OPENAI_API_KEY=your_openai_api_key
-LLM_MODEL=gpt-3.5-turbo
-LLM_TEMPERATURE=0.7
-LLM_MAX_TOKENS=1000
+LLM_MODEL=gpt-5-nano-2025-08-07
+LLM_TEMPERATURE=1
+LLM_MAX_TOKENS=3000
 
 # Embeddings / Vector DB
 CHROMA_PERSIST_DIRECTORY=./chroma_db
@@ -149,7 +149,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 # Files
 UPLOAD_DIR=./uploads
-MAX_FILE_SIZE=50000000
+MAX_FILE_SIZE=5000000
 
 # CORS (comma-separated for multiple)
 ALLOWED_ORIGINS=["http://localhost:5173","http://localhost:3000"]
@@ -162,13 +162,18 @@ LOG_LEVEL=INFO
 ERROR_LOGGING=1
 ERROR_LOG_DIR=./logs
 SENTRY_DSN=
+
+# Server Configuration
+PORT=7000
+
 ```
 
 ### Frontend (.env.local)
 ```
-VITE_API_URL=http://localhost:8000
-VITE_WS_URL=ws://localhost:8000
+VITE_API_URL=http://localhost:7000
+VITE_WS_URL=ws://localhost:7000
 VITE_SENTRY_DSN=
+VITE_BACKEND_PORT=7000
 ```
 
 ## 📡 API & Endpoints
