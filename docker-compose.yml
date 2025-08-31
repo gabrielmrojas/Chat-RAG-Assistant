@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "7000:7000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+      - chroma_db:/app/chroma_db # Persist ChromaDB data
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "6173:6173"
+    env_file:
+      - ./frontend/.env
+    environment:
+      - VITE_API_BASE_URL=http://backend:7000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Don't overwrite node_modules with host's
+    depends_on:
+      - backend
+
+volumes:
+  chroma_db:
