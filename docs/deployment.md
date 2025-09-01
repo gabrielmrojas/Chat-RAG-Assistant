@@ -125,3 +125,10 @@ Notes:
 
 ## 7) Platform options
 You can also deploy to managed platforms (Render, Railway, Azure App Service, etc.). Configure environment variables there, point the frontend to the backend’s public URL, and ensure persistent storage for Chroma if needed.
+
+When deploying the frontend, it is critical to set the `VITE_API_BASE_URL` environment variable. This variable tells your frontend application where to find the backend API.
+
+- **Variable Name**: `VITE_API_BASE_URL`
+- **Value**: The full public URL of your deployed backend service (e.g., `https://your-backend-url.com`).
+
+In platforms like Coolify, you can set this in the "Environment Variables" section of your frontend service configuration. Failure to set this variable will result in the frontend being unable to communicate with the backend in a production environment.

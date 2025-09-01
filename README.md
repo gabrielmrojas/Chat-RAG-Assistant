@@ -59,6 +59,19 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ### Manual Frontend Setup
 ```bash
 cd frontend
+cp .env.example .env
+```
+
+#### Environment Variables
+
+The frontend requires the following environment variables to be set in `.env`:
+
+- `VITE_API_BASE_URL`: The full URL to the backend API. This is crucial for production deployments where the frontend and backend may be hosted on different domains.
+  - For local development, set this to `http://localhost:7000` (or whatever port your backend is running on).
+  - For production, set it to your backend's public URL (e.g., `https://api.yourdomain.com`).
+- `VITE_FRONTEND_PORT`: The port for the Vite development server. Defaults to `6173`.
+
+```bash
 npm install
 npm run dev
 ```
@@ -170,10 +183,9 @@ PORT=7000
 
 ### Frontend (.env.local)
 ```
-VITE_API_URL=http://localhost:7000
-VITE_WS_URL=ws://localhost:7000
+VITE_FRONTEND_PORT=6173
+VITE_API_BASE_URL=http://localhost:7000
 VITE_SENTRY_DSN=
-VITE_BACKEND_PORT=7000
 ```
 
 ## 📡 API & Endpoints
