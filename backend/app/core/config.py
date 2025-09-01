@@ -35,12 +35,7 @@ class Settings(BaseSettings):
     max_file_size: int = 5242880  # 5MB (5 * 1024 * 1024)
     
     # CORS
-    allowed_origins: List[str] = [
-        "http://localhost:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:3000",
-        "http://127.0.0.1:5173",
-    ]
+    allowed_origins: List[str]
     
     # Development
     debug: bool = True
@@ -59,6 +54,15 @@ class Settings(BaseSettings):
     @field_validator("allowed_origins", mode="before")
     def assemble_cors_origins(cls, v):
         if isinstance(v, str):
+            # Handle both comma-separated and JSON array formats
+            if v.startswith('[') and v.endswith(']'):
+                # Handle JSON array format
+                import json
+                try:
+                    return json.loads(v)
+                except json.JSONDecodeError:
+                    pass
+            # Handle comma-separated string
             return [i.strip() for i in v.split(",")]
         return v
     
