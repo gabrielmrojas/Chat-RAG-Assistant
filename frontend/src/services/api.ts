@@ -18,8 +18,10 @@ class ApiService {
   private api: AxiosInstance
 
   constructor() {
+    const baseURL = import.meta.env.VITE_API_BASE_URL || '/api/v1';
+
     this.api = axios.create({
-      baseURL: '/api/v1',
+      baseURL: baseURL,
       timeout: 30000,
       headers: {
         'Content-Type': 'application/json',
@@ -206,11 +208,21 @@ class ApiService {
 
   // Utility methods
   getWebSocketUrl(sessionId: string): string {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-    // Use dynamic backend port from environment variable or fallback to 8000
-    const backendPort = (import.meta as any).env?.VITE_BACKEND_PORT || '8000'
-    const host = window.location.hostname + ':' + backendPort
-    return `${protocol}//${host}/api/v1/chat/ws/${sessionId}`
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
+    if (apiBaseUrl) {
+      // If VITE_API_BASE_URL is set, derive the WebSocket URL from it.
+      const wsUrl = new URL(apiBaseUrl);
+      wsUrl.protocol = wsUrl.protocol.replace('http', 'ws');
+      wsUrl.pathname = `/api/v1/chat/ws/${sessionId}`;
+      return wsUrl.toString();
+    } else {
+      // Fallback for local development when VITE_API_BASE_URL is not set,
+      // assuming the frontend is served via a proxy to the backend's /api/v1.
+      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const host = window.location.host;
+      return `${protocol}//${host}/api/v1/chat/ws/${sessionId}`;
+    }
   }
 
   // Error handling helper
