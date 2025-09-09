@@ -31,6 +31,18 @@
 
 ## 🚀 Setup
 
+## ⚠️ Important: Database Creation
+
+**The backend will automatically create all required tables on startup if the database already exists and the configured user has permissions. However, the database itself (e.g., `chatrag_db` in PostgreSQL) must be created manually before starting the backend.**
+
+If the database does not exist, you must create it using your database administration tool or a command like:
+
+```sql
+CREATE DATABASE chatrag_db;
+```
+
+Once the database exists, the backend will handle table creation automatically on startup.
+
 ### Prerequisites
 - Node.js 18+
 - Python 3.12

@@ -7,25 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "7000:7000"
-    environment:
-      - DATABASE_URL=postgresql://chat:1234567@10.1.0.4:3002/chatrag_db
-      - LLM_MODEL=gpt-5-nano-2025-08-07
-      - LLM_TEMPERATURE=1
-      - LLM_MAX_TOKENS=3000
-      - CHROMA_PERSIST_DIRECTORY=./chroma_db
-      - EMBEDDING_MODEL=text-embedding-ada-002
-      - SECRET_KEY=l3a9Jq8yC7!vN0xHf4ZtP1sK9uRbX2dEw5Yg+MqT
-      - ALGORITHM=HS256
-      - ACCESS_TOKEN_EXPIRE_MINUTES=30
-      - UPLOAD_DIR=./uploads
-      - MAX_FILE_SIZE=5000000
-      - ALLOWED_ORIGINS=["http://localhost:3000","http://localhost:6173","http://10.0.2.3:6173","https://chatragsimple.gabrieltech.me"]
-      - DEBUG=True
-      - LOG_LEVEL=INFO
-      - ERROR_LOGGING=1
-      - ERROR_LOG_DIR=./logs
-      - SENTRY_DSN=
-      - PORT=7000
+    env_file:
+      - ./backend/.env
     volumes:
       - chroma_db:/app/chroma_db
     command: uvicorn app.main:app --host 0.0.0.0 --port 7000

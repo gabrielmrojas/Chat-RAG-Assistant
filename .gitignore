@@ -26,6 +26,8 @@ htmlcov/
 .vscode/
 .windsurf/
 
+DEVELOPMENT_GUIDE.md
+
 # ===== NODE.JS/FRONTEND =====
 # Dependencies
 node_modules/

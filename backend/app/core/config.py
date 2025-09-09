@@ -17,8 +17,8 @@ class Settings(BaseSettings):
     # OpenAI
     openai_api_key: str
     # LLM configuration
-    llm_model: str = "gpt-3.5-turbo"
-    llm_temperature: float = 0.7
+    llm_model: str = "gpt-5-nano-2025-08-07"
+    llm_temperature: float = 1
     llm_max_tokens: int = 1000
     
     # Vector Database
@@ -32,7 +32,7 @@ class Settings(BaseSettings):
     
     # File Storage
     upload_dir: str = "./uploads"
-    max_file_size: int = 5242880  # 5MB (5 * 1024 * 1024)
+    max_file_size: int = 1048576  # 1MB (1 * 1024 * 1024)
     
     # CORS
     allowed_origins: List[str]
