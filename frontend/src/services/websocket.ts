@@ -172,11 +172,17 @@ class WebSocketService {
   }
 
   private getWebSocketUrl(sessionId: string): string {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-    // Use dynamic backend port from environment variable or fallback to 8000
-    const backendPort = (import.meta as any).env?.VITE_BACKEND_PORT || '8000'
-    const host = window.location.hostname + ':' + backendPort
-    return `${protocol}//${host}/api/v1/chat/ws/${sessionId}`
+    // Always use VITE_API_BASE_URL for WebSocket connections
+    let apiBaseUrl = (import.meta as any).env?.VITE_API_BASE_URL || ''
+    if (!apiBaseUrl) {
+      throw new Error('VITE_API_BASE_URL is not set')
+    }
+    // Remove trailing slash if present
+    apiBaseUrl = apiBaseUrl.replace(/\/$/, '')
+    // Convert http(s) to ws(s)
+    let wsBaseUrl = apiBaseUrl.replace(/^http/, 'ws')
+    // Only append /chat/ws, not /api/v1/chat/ws
+    return `${wsBaseUrl}/chat/ws/${sessionId}`
   }
 
   isConnected(): boolean {

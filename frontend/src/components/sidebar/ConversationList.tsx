@@ -127,10 +127,10 @@ export function ConversationList({ className }: ConversationListProps) {
         <h3 className="font-medium text-sm mb-3 text-foreground">Recent Conversations</h3>
         
         {conversations.map((conversation) => (
-          <div
+      <div
             key={conversation.id}
             className={cn(
-              "group relative p-3 rounded-lg border cursor-pointer transition-colors",
+        "group relative p-3 pr-10 rounded-lg border cursor-pointer transition-colors",
               "hover:bg-accent hover:border-accent-foreground/20",
               "border-border/50",
               currentConversation?.id === conversation.id && "bg-accent border-accent-foreground/20"
@@ -187,7 +187,7 @@ export function ConversationList({ className }: ConversationListProps) {
               </div>
               
               {editingId !== conversation.id && (
-                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute right-2 top-2 flex items-center gap-1">
                   <Button
                     variant="ghost"
                     size="sm"
